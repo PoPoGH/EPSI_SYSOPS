@@ -3,17 +3,24 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Récupère les sources du dépôt GitHub
+                // Étape de récupération des sources du dépôt GitHub
                 checkout scm
             }
         }
         stage('Build') {
-            steps {
-                // Étape de génération du site statique
-                sh 'pandoc -s index.md --template _template_.html -o index.html'
-                
-                // Étape de génération du fichier DOCX
-                sh 'pandoc -s index.md -o index.docx'
+            parallel {
+                stage('Generate Site') {
+                    steps {
+                        // Étape de génération du site statique
+                        sh 'pandoc -s index.md --template _template_.html -o index.html'
+                    }
+                }
+                stage('Generate DOCX') {
+                    steps {
+                        // Étape de génération du fichier DOCX
+                        sh 'pandoc -s index.md -o index.docx'
+                    }
+                }
             }
         }
         stage('Archive') {
