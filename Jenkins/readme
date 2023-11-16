@@ -1,0 +1,39 @@
+Guide d'installation et de configuration de Jenkins
+Ce script Bash vous permet d'installer et de configurer Jenkins sur un serveur Linux. Suivez ces étapes pour mettre en place Jenkins sur votre machine :
+
+Prérequis
+Système d'exploitation Linux
+Accès à une machine avec des privilèges sudo
+Utilisation
+Clonez ce dépôt ou copiez le contenu du script Bash dans un fichier avec l'extension .sh sur votre serveur Linux.
+
+Exécutez le script Bash en utilisant la commande suivante :
+
+
+./install.sh [PORT]
+Remplacez [PORT] par le numéro de port que vous souhaitez utiliser pour Jenkins. Par défaut, le script utilisera le port 8080 si aucun port n'est spécifié.
+
+Le script effectuera les étapes suivantes :
+
+Mettra à jour les paquets du système.
+Installera Java et affichera la version installée.
+Ajoutera la clé Jenkins et le dépôt Jenkins à votre système.
+Mettra à jour les paquets à nouveau et installera Jenkins.
+Modifiera le fichier de service Jenkins pour utiliser le port spécifié (ou 8080 par défaut).
+Rechargera les configurations de systemd et redémarrera Jenkins.
+Attendra le démarrage de Jenkins et récupérera le mot de passe initial de l'administrateur Jenkins.
+Après l'exécution réussie du script, vous verrez le mot de passe initial de Jenkins affiché dans la console. Vous pouvez utiliser ce mot de passe pour accéder à l'interface Web de Jenkins pour la première fois.
+
+Ouvrez un navigateur Web et accédez à Jenkins en utilisant l'URL suivante :
+
+http://votre_adresse_ip:PORT/
+Remplacez votre_adresse_ip par l'adresse IP de votre serveur et PORT par le numéro de port que vous avez spécifié lors de l'exécution du script.
+
+Suivez les étapes de configuration initiale de Jenkins à l'aide du mot de passe initial pour créer votre compte administrateur et personnaliser Jenkins selon vos besoins.
+
+Notes
+Assurez-vous d'avoir les privilèges sudo pour exécuter ce script, car il nécessite l'installation de paquets système et la modification de fichiers système.
+
+Ce script a été conçu pour être exécuté sur un système Linux, en particulier sur des distributions basées sur Debian.
+
+Assurez-vous de sécuriser votre installation Jenkins en configurant les options de sécurité appropriées une fois l'installation terminée.
