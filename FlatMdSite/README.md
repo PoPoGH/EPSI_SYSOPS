@@ -20,4 +20,4 @@ pandoc -s index.md index.docx
 ```
 
 ## Authors
-Sylvain L.
+Quentin L
