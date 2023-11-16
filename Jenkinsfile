@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Étape de récupération des sources du dépôt GitHub
+                // Récupère les sources du dépôt GitHub
                 checkout scm
             }
         }
@@ -21,6 +21,12 @@ pipeline {
                         sh 'pandoc -s index.md -o index.docx'
                     }
                 }
+            }
+        }
+        stage('HTML Validation') {
+            steps {
+                // Étape de validation HTML avec tidy
+                sh 'tidy -q -e *.html'
             }
         }
         stage('Archive') {
